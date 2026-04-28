@@ -181,10 +181,12 @@ def to_date(ctx, coll):
 
 def create_converts_to_fn(to_function, _type):
     if isinstance(_type, str):
+
         def in_function(ctx, coll):
             if len(coll) != 1:
                 return []
             return type(to_function(ctx, coll)).__name__ == _type
+
         return in_function
 
     def in_function(ctx, coll):
@@ -197,8 +199,8 @@ def create_converts_to_fn(to_function, _type):
 
 
 def to_boolean(ctx, coll):
-    true_strings = ['true', 't', 'yes', 'y', '1', '1.0']
-    false_strings = ['false', 'f', 'no', 'n', '0', '0.0']
+    true_strings = ["true", "t", "yes", "y", "1", "1.0"]
+    false_strings = ["false", "f", "no", "n", "0", "0.0"]
 
     if len(coll) != 1:
         return []
@@ -230,15 +232,18 @@ def boolean_singleton(coll):
     elif len(coll) == 1:
         return True
 
+
 def string_singleton(coll):
     d = util.get_data(coll[0])
     if isinstance(d, str):
         return d
 
+
 singleton_eval_by_type = {
     "Boolean": boolean_singleton,
     "String": string_singleton,
 }
+
 
 def singleton(coll, type):
     if len(coll) > 1:
@@ -248,7 +253,7 @@ def singleton(coll, type):
     to_singleton = singleton_eval_by_type[type]
     if to_singleton:
         val = to_singleton(coll)
-        if (val is not None):
+        if val is not None:
             return val
         raise Exception(f"Expected {type.lower()}, but got: {coll}")
     raise Exception(f"Not supported type {type}")
