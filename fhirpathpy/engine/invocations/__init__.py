@@ -49,6 +49,7 @@ invocation_registry = {
     "intersect": {"fn": subsetting.intersect_fn, "arity": {1: ["AnyAtRoot"]}},
     "combine": {"fn": combining.combine_fn, "arity": {1: ["AnyAtRoot"]}},
     "iif": {"fn": misc.iif_macro, "arity": {2: ["Expr", "Expr"], 3: ["Expr", "Expr", "Expr"]}},
+    "coalesce": {"fn": misc.coalesce_macro, "variadic": "Expr"},
     "trace": {"fn": misc.trace_fn, "arity": {0: [], 1: ["String"]}},
     "toInteger": {"fn": misc.to_integer},
     "toBoolean": {"fn": misc.to_boolean},

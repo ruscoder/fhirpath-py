@@ -63,6 +63,15 @@ def doInvoke(ctx, fn_name, data, raw_params):
     if "nullable_input" in invocation and util.is_nullable(data):
         return []
 
+    if "variadic" in invocation:
+        param_type = invocation["variadic"]
+        thisValue = ctx["$this"] if "$this" in ctx else ctx["dataRoot"]
+        params = [ctx, util.arraify(data)]
+        for pr in (raw_params or []):
+            params.append(make_param(ctx, thisValue, param_type, pr))
+        res = invocation["fn"](*params)
+        return util.arraify(res)
+
     if "arity" not in invocation:
         if raw_params is None or util.is_empty(raw_params):
             res = invocation["fn"](ctx, util.arraify(data))

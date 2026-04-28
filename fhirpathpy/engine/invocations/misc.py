@@ -20,6 +20,14 @@ def iif_macro(ctx, data, cond, ok, fail=None):
         return []
 
 
+def coalesce_macro(ctx, data, *exprs):
+    for expr in exprs:
+        result = util.arraify(expr(data))
+        if not util.is_empty(result):
+            return result
+    return []
+
+
 def trace_fn(ctx, x, label=""):
     # Check if a custom trace callback is provided in the context
     if "traceFn" in ctx and callable(ctx["traceFn"]):

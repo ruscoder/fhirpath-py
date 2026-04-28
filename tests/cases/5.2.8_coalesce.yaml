@@ -1,0 +1,30 @@
+tests:
+  - desc: '5.2.8. coalesce(value : collection, value : collection, ...) : collection'
+
+  - desc: '** returns first non-empty argument'
+    expression: coalesce(1, 2)
+    result: [1]
+
+  - desc: '** skips empty collection and returns next value'
+    expression: coalesce({}, 1, 2)
+    result: [1]
+
+  - desc: '** skips multiple empty collections'
+    expression: coalesce({}, {}, 3)
+    result: [3]
+
+  - desc: '** returns empty when all arguments are empty'
+    expression: coalesce({})
+    result: []
+
+  - desc: '** returns empty when called with no arguments'
+    expression: coalesce()
+    result: []
+
+  - desc: '** returns fallback string when patient has no matching identifier'
+    expression: "coalesce(Patient.identifier.where(system = 'http://example.org/identifier').value.first(), 'unknown')"
+    result: ['unknown']
+
+subject:
+  resourceType: Patient
+  id: example
