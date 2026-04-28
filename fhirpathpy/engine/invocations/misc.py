@@ -35,10 +35,10 @@ def to_integer(ctx, coll):
 
     value = util.get_data(coll[0])
 
-    if value == False:
+    if value is False:
         return 0
 
-    if value == True:
+    if value is True:
         return 1
 
     if util.is_number(value):
@@ -71,7 +71,7 @@ def to_quantity(ctx, coll, to_unit=None):
         v = util.val_data_converted(coll[0])
         quantity_regex_res = None
 
-        if isinstance(v, (int, Decimal)):
+        if isinstance(v, int | Decimal):
             result = nodes.FP_Quantity(v, "'1'")
         elif isinstance(v, nodes.FP_Quantity):
             result = v
@@ -210,10 +210,10 @@ def to_boolean(ctx, coll):
 
     if var_type == "bool":
         return val
-    elif var_type == "int" or var_type == "float":
-        if val == 1 or val == 1.0:
+    elif var_type in ("int", "float"):
+        if val in (1, 1.0):
             return True
-        elif val == 0 or val == 0.0:
+        elif val in (0, 0.0):
             return False
     elif var_type == "str":
         lower_case_var = val.lower()

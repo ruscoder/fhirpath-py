@@ -1,6 +1,4 @@
-import numbers
 from collections import abc
-from decimal import Decimal
 
 from fhirpathpy.engine import nodes, util
 
@@ -54,18 +52,18 @@ def repeat_macro(ctx, data, expr):
     res = []
     items = data
 
-    next = None
+    next_item = None
     lres = None
 
     uniq = set()
 
     while len(items) != 0:
-        next = items[0]
+        next_item = items[0]
         items = items[1:]
-        lres = [l for l in expr(next) if l not in uniq]
+        lres = [elem for elem in expr(next_item) if elem not in uniq]
         if len(lres) > 0:
-            for l in lres:
-                uniq.add(l)
+            for elem in lres:
+                uniq.add(elem)
             res = res + lres
             items = items + lres
 

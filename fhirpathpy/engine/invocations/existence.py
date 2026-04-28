@@ -2,7 +2,6 @@ from decimal import Decimal
 
 from fhirpathpy.engine import nodes, util
 from fhirpathpy.engine.invocations import filtering, misc
-from fhirpathpy.engine.invocations.misc import to_boolean
 
 """
 This file holds code to hande the FHIRPath Existence functions
@@ -52,7 +51,7 @@ def all_macro(ctx, colls, expr):
 
 def extract_boolean_value(data):
     value = util.get_data(data)
-    if type(value) != bool:
+    if type(value) is not bool:
         raise Exception("Found type '" + type(data) + "' but was expecting bool")
     return value
 
