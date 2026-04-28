@@ -1,6 +1,7 @@
 import base64
 import re
-import fhirpathpy.engine.util as util
+
+from fhirpathpy.engine import util
 
 
 def ensure_string_singleton(x):

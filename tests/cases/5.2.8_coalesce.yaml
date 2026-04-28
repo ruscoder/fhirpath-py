@@ -1,0 +1,32 @@
+tests:
+  - desc: '5.2.8. coalesce(value : collection [, value : collection ...]) : collection'
+
+  - desc: '** returns first non-empty scalar when first arg is empty'
+    expression: coalesce({}, 1, 2)
+    result: [1]
+
+  - desc: '** returns first non-empty collection when first arg is empty'
+    expression: coalesce({}, (1 | 2), (3 | 4))
+    result: [1, 2]
+
+  - desc: '** returns empty collection when all args are empty'
+    expression: coalesce({}, {})
+    result: []
+
+  - desc: '** returns first arg when it is non-empty'
+    expression: coalesce(1, 2)
+    result: [1]
+
+  - desc: '** real case - found identifier returns its value'
+    expression: "coalesce(Patient.identifier.where(system = 'required-system').value.first(), 'unknown')"
+    result: ['required-value']
+
+  - desc: '** real case - missing identifier falls back to default'
+    expression: "coalesce(Patient.identifier.where(system = 'another-system').value.first(), 'unknown')"
+    result: ['unknown']
+
+subject:
+  resourceType: Patient
+  identifier:
+    - system: required-system
+      value: required-value

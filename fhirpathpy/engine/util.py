@@ -1,8 +1,9 @@
-from decimal import Decimal
 import json
 from collections import OrderedDict
+from decimal import Decimal
 from functools import reduce
-from fhirpathpy.engine.nodes import ResourceNode, FP_Quantity
+
+from fhirpathpy.engine.nodes import FP_Quantity, ResourceNode
 
 
 class set_paths:

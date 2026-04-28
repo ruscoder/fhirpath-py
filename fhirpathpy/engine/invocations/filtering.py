@@ -1,8 +1,8 @@
+import numbers
 from collections import abc
 from decimal import Decimal
-import numbers
-import fhirpathpy.engine.util as util
-import fhirpathpy.engine.nodes as nodes
+
+from fhirpathpy.engine import nodes, util
 
 # Contains the FHIRPath Filtering and Projection functions.
 # (Section 5.2 of the FHIRPath 1.0.0 specification).

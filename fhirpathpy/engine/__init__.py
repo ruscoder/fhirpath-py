@@ -1,11 +1,12 @@
 import json
 import numbers
-import fhirpathpy.engine.util as util
-from fhirpathpy.engine.nodes import TypeInfo
+
+from fhirpathpy.engine import util
 from fhirpathpy.engine.evaluators import evaluators
 from fhirpathpy.engine.invocations import (
     invocation_registry as base_invocation_registry,
 )
+from fhirpathpy.engine.nodes import TypeInfo
 
 
 def check_integer_param(val):
@@ -62,6 +63,12 @@ def doInvoke(ctx, fn_name, data, raw_params):
 
     if "nullable_input" in invocation and util.is_nullable(data):
         return []
+
+    if "variadic" in invocation:
+        thisValue = ctx["$this"] if "$this" in ctx else ctx["dataRoot"]
+        expr_params = [make_param(ctx, thisValue, "Expr", pr) for pr in (raw_params or [])]
+        res = invocation["fn"](ctx, util.arraify(data), *expr_params)
+        return util.arraify(res)
 
     if "arity" not in invocation:
         if raw_params is None or util.is_empty(raw_params):
@@ -160,10 +167,7 @@ def make_param(ctx, parentData, node_type, param):
 
     if len(res) > 1:
         raise Exception(
-            "Unexpected collection"
-            + json.dumps(res)
-            + "; expected singleton of type "
-            + node_type
+            "Unexpected collection" + json.dumps(res) + "; expected singleton of type " + node_type
         )
 
     if len(res) == 0:

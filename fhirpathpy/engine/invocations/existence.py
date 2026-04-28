@@ -1,10 +1,8 @@
 from decimal import Decimal
-from fhirpathpy.engine.invocations import misc
-from fhirpathpy.engine.invocations.misc import to_boolean
-import fhirpathpy.engine.util as util
-import fhirpathpy.engine.nodes as nodes
-import fhirpathpy.engine.invocations.filtering as filtering
 
+from fhirpathpy.engine import nodes, util
+from fhirpathpy.engine.invocations import filtering, misc
+from fhirpathpy.engine.invocations.misc import to_boolean
 
 """
 This file holds code to hande the FHIRPath Existence functions

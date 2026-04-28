@@ -1,15 +1,15 @@
-from collections import abc
 import copy
-from datetime import datetime, timedelta, timezone
-from dateutil.relativedelta import relativedelta
-from dateutil import parser, tz
-from decimal import ROUND_HALF_UP, ROUND_UP, Decimal
-import math
 import json
+import math
 import re
 import time
+from collections import abc
+from datetime import datetime, timedelta, timezone
+from decimal import ROUND_HALF_UP, ROUND_UP, Decimal
 from typing import Optional
 
+from dateutil import parser, tz
+from dateutil.relativedelta import relativedelta
 
 timeRE = (
     r"^T?([0-9]{2})(?::([0-9]{2}))?(?::([0-9]{2}))?(?:\.([0-9]+))?(Z|(\+|-)[0-9]{2}(:[0-9]{2})?)?$"
@@ -598,7 +598,7 @@ class FP_Time(FP_TimeBase):
         if not re.match(timeRE, dateStr):
             return None
 
-        return super(FP_Time, cls).__new__(cls)
+        return super().__new__(cls)
 
     def __init__(self, timeStr):
         self.asStr = timeStr if isinstance(timeStr, str) else None
@@ -705,7 +705,7 @@ class FP_DateTime(FP_TimeBase):
         if not re.match(dateTimeRE, dateStr):
             return None
 
-        return super(FP_DateTime, cls).__new__(cls)
+        return super().__new__(cls)
 
     def __init__(self, dateStr):
         self.asStr = dateStr if isinstance(dateStr, str) else None
@@ -833,8 +833,8 @@ class ResourceNode:
         self.path = path
         self.data = data
         self._data = _data
-        self.propName: Optional[str] = propName
-        self.index: Optional[int] = index
+        self.propName: str | None = propName
+        self.index: int | None = index
 
     def __eq__(self, value):
         if isinstance(value, ResourceNode):

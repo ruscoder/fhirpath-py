@@ -1,8 +1,7 @@
 import re
 from decimal import Decimal
 
-import fhirpathpy.engine.util as util
-import fhirpathpy.engine.nodes as nodes
+from fhirpathpy.engine import nodes, util
 
 # This file holds code to hande the FHIRPath Existence functions (5.1 in the
 # specification).
@@ -243,7 +242,7 @@ singleton_eval_by_type = {
 
 def singleton(coll, type):
     if len(coll) > 1:
-        raise Exception("Unexpected collection {coll}; expected singleton of type {type}".format(coll=coll, type=type))
+        raise Exception(f"Unexpected collection {coll}; expected singleton of type {type}")
     elif len(coll) == 0:
         return []
     to_singleton = singleton_eval_by_type[type]
@@ -251,5 +250,5 @@ def singleton(coll, type):
         val = to_singleton(coll)
         if (val is not None):
             return val
-        raise Exception("Expected {type}, but got: {coll}".format(type=type.lower(), coll=coll))
-    raise Exception("Not supported type {}".format(type))
+        raise Exception(f"Expected {type.lower()}, but got: {coll}")
+    raise Exception(f"Not supported type {type}")
