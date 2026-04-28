@@ -1,12 +1,13 @@
 # Generated from FHIRPath.g4 by ANTLR 4.13.0
-# encoding: utf-8
-from antlr4 import *
-from io import StringIO
 import sys
+from io import StringIO
+
+from antlr4 import *
+
 if sys.version_info[1] > 5:
 	from typing import TextIO
 else:
-	from typing.io import TextIO
+	from typing import TextIO
 
 def serializedATN():
     return [
@@ -625,7 +626,7 @@ class FHIRPathParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
                         self.state = 40
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 960) != 0)):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 960) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -643,7 +644,7 @@ class FHIRPathParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 43
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1072) != 0)):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 1072) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -674,7 +675,7 @@ class FHIRPathParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
                         self.state = 49
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 61440) != 0)):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 61440) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -692,7 +693,7 @@ class FHIRPathParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 52
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 3932160) != 0)):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 3932160) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1665,7 +1666,7 @@ class FHIRPathParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 137
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 140187732541440) != 0)):
+            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 140187732541440) != 0):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1710,7 +1711,7 @@ class FHIRPathParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 139
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 35888059530608640) != 0)):
+            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 35888059530608640) != 0):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1860,7 +1861,7 @@ class FHIRPathParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 151
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 432345564240347136) != 0)):
+            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 432345564240347136) != 0):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)

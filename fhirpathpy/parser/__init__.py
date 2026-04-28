@@ -1,11 +1,13 @@
 import sys
+
 from antlr4 import *
-from antlr4.tree.Tree import ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
 from antlr4.error.Errors import LexerNoViableAltException
+from antlr4.tree.Tree import ParseTreeWalker
+
+from fhirpathpy.parser.ASTPathListener import ASTPathListener
 from fhirpathpy.parser.generated.FHIRPathLexer import FHIRPathLexer
 from fhirpathpy.parser.generated.FHIRPathParser import FHIRPathParser
-from fhirpathpy.parser.ASTPathListener import ASTPathListener
 
 
 def recover(e):

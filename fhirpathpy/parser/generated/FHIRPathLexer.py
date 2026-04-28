@@ -1,11 +1,13 @@
 # Generated from FHIRPath.g4 by ANTLR 4.13.0
-from antlr4 import *
-from io import StringIO
 import sys
+from io import StringIO
+
+from antlr4 import *
+
 if sys.version_info[1] > 5:
     from typing import TextIO
 else:
-    from typing.io import TextIO
+    from typing import TextIO
 
 
 def serializedATN():
@@ -267,7 +269,7 @@ class FHIRPathLexer(Lexer):
     COMMENT = 62
     LINE_COMMENT = 63
 
-    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
+    channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ]
 
     modeNames = [ "DEFAULT_MODE" ]
 
